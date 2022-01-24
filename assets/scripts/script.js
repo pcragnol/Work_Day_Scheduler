@@ -14,22 +14,12 @@ $("textarea").each(function () {
   }
 });
 
-console.log($("#test").parent().parent().data("hour"));
-
 $(".saveBtn").on("click", function (event) {
-  console.log($(event.target).parent("tr").children("th").text());
-  console.log($(event.target).parent("tr").children("td").eq(0).children().text());
-  localStorage.setItem(`${$(event.target).parent("tr").children("th").text()} event`, $(event.target).parent("tr").children("td").eq(0).children().val());
+  // localStorage.setItem(`${$(event.target).parent("tr").children("th").text()} event`, $(event.target).parent("tr").children("td").eq(0).children().val());
+  localStorage.setItem(`${$(event.target).parent("tr").children("td").eq(0).children().data("hour")} event`, $(event.target).parent("tr").children("td").eq(0).children().val());
 });
 
-// $("button").each(function () {
-//   $(this).addEventListener("click", function () {
-//     console.log("test");
-//   });
-// });
-
-// $("button").each($(this).addEventListener("click", function () {
-//   console.log("test");
-// }));
-
-// $("button").each(addEventListener("click", console.log("test")));
+$("textarea").each(function () {
+  // $(this).val(localStorage.getItem(`${$(this).parent("tr").children("th").text()} event`));
+  $(this).val(localStorage.getItem(`${$(this).data("hour")} event`));
+});
